@@ -19,10 +19,19 @@ requestInputData(1).then((inputData) => {
   secondColumn.sort((a, b) => a - b);
 
   let totalDistance = 0;
+  let similarityScore = 0
 
   for (let i = 0; i < firstColumn.length - 1; i++) {
+
     totalDistance += Math.abs(firstColumn[i] - secondColumn[i]);
+
+    const similarValues = secondColumn.filter((secondColumnValue)=>{return secondColumnValue === firstColumn[i]})
+    
+    similarityScore += firstColumn[i] * similarValues.length
+
   }
 
-  console.log(totalDistance);
+  console.log("total distance: ", totalDistance);
+  console.log("similarity score", similarityScore)
 });
+
